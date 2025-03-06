@@ -1,0 +1,996 @@
+= Lumo Style Properties
+
+Lumo is based on a set of style properties -- CSS custom properties -- representing colors, fonts, sizes and other styles, that can be customized by providing new values for them in a CSS stylesheet, either globally, or <<../../styling-components#scoping-style-properties, scoped>> to a certain component type or instance.
+
+.Lumo Style Properties Example & Use in Vaadin Components
+[.fill.white]
+image::_images/lumo-properties.png[A small sample of Lumo style properties and their use in Vaadin components, 400]
+
+.Customizing Values of Lumo Style Properties
+[source,css]
+----
+html {
+  --lumo-primary-color: green;
+  --lumo-font-family: 'Roboto';
+}
+----
+
+Lumo style properties can also be used in CSS instead of hard-coded literal values, through the `var()` function:
+
+.Use of Lumo Style Properties in Custom CSS
+[source,css]
+----
+div {
+  border: 1px solid var(--lumo-primary-color);
+  border-radius: var(--lumo-border-radius-m);
+}
+----
+
+The <<../../styling-components#, Styling Vaadin Components>> section provides more details on using Lumo properties to modify the look and feel of Vaadin components. The <<../../styling-other-elements#, Styling Other UI Elements>> section provides more details on using Lumo properties to style other UI elements.
+
+= Lumo Colors
+
+Lumo defines a set of style properties (i.e., CSS custom properties) for colors. You can use these properties to apply a consistent color palette across your application.
+
+You can use the built-in <<{articles}/styling/lumo/lumo-variants#, Lumo light and dark mode variants>> to switch the color palette of all components in your application. This page lists and displays the available color properties in Lumo.
+
+Lumo uses the light theme variant, by default. You can change colors for the light theme by customizing the style properties, like this:
+
+[source,css]
+----
+html {
+  --lumo-primary-color: blue;
+}
+----
+
+If you're using the Lumo Dark theme variant, customize colors after the `[theme~="dark"]` selector like this:
+
+[source,css]
+----
+[theme~="dark"] {
+  --lumo-primary-color: red;
+}
+----
+
+By using the `~=` operator in the `[theme~="dark"]` selector it'll match the color when multiple theme variants are defined on a single element. For example, if you use the `theme="small dark"` attribute on a HTML element somewhere in the global style scope of your application, the color change applies to it, as well. This helps you achieve a unified appearance between the different components in your application. Using only the `=` operator here is slightly more performant, but it won't match the color on other instances.
+
+
+== Base
+
+The base color is used as the main background color for the system. The <<grayscale>> colors are designed to be used on top of it, and the <<text>> colors are designed to provide sufficient contrast with it.
+
+[.property-listing.previews, cols="2,>1"]
+|===
+| Description | CSS Custom Property
+
+| [preview(--lumo-base-color)]*Base*
+| [custom-property]#--lumo-base-color#
+
+|===
+
+
+== Grayscale
+
+These colors form the foundation for your application colors. The grayscale colors are useful for dividing pages into sections with different backgrounds and borders, or they might be used as text colors.
+
+[.property-listing.previews, cols="2,>1"]
+|===
+| Description | CSS Custom Property
+
+| [preview(--lumo-contrast-5pct)]*Contrast 5%* +
+Button background. Button toolbar. Secondary section background.
+| [custom-property]#--lumo-contrast-5pct#
+
+| [preview(--lumo-contrast-10pct)]*Contrast 10%* +
+Input field background.
+| [custom-property]#--lumo-contrast-10pct#
+
+| [preview(--lumo-contrast-20pct)]*Contrast 20%* +
+Divider border color.
+| [custom-property]#--lumo-contrast-20pct#
+
+| [preview(--lumo-contrast-30pct)]*Contrast 30%* +
+Disabled text.
+| [custom-property]#--lumo-contrast-30pct#
+
+| [preview(--lumo-contrast-40pct)]*Contrast 40%* +
+| [custom-property]#--lumo-contrast-40pct#
+
+| [preview(--lumo-contrast-50pct)]*Contrast 50%* +
+Tertiary text.
+| [custom-property]#--lumo-contrast-50pct#
+
+| [preview(--lumo-contrast-60pct)]*Contrast 60%* +
+Icons.
+| [custom-property]#--lumo-contrast-60pct#
+
+| [preview(--lumo-contrast-70pct)]*Contrast 70%* +
+Secondary text.
+| [custom-property]#--lumo-contrast-70pct#
+
+| [preview(--lumo-contrast-80pct)]*Contrast 80%* +
+| [custom-property]#--lumo-contrast-80pct#
+
+| [preview(--lumo-contrast-90pct)]*Contrast 90%* +
+Body text.
+| [custom-property]#--lumo-contrast-90pct#
+
+| [preview(--lumo-contrast)]*Contrast 100%* +
+Heading text.
+| [custom-property]#--lumo-contrast#
+
+|===
+
+
+== Primary
+
+This is the most prominent color in the system. It's used to bring attention to certain elements in the interface. Accompanying text and contrast colors are also defined.
+
+[.property-listing.previews, cols="2,>1"]
+|===
+| Description | CSS Custom Property
+
+| [preview(--lumo-primary-color-10pct)]*Primary 10%* +
+Badge background.
+| [custom-property]#--lumo-primary-color-10pct#
+
+| [preview(--lumo-primary-color-50pct)]*Primary 50%* +
+Focus outline color.
+| [custom-property]#--lumo-primary-color-50pct#
+
+| [preview(--lumo-primary-color)]*Primary 100%* +
+Primary button background.
+| [custom-property]#--lumo-primary-color#
+
+| [preview(--lumo-primary-text-color)]*Primary Text* +
+Secondary & tertiary button text.
+| [custom-property]#--lumo-primary-text-color#
+
+| [preview(--lumo-primary-contrast-color)]*Primary Contrast* +
+Primary button text.
+| [custom-property]#--lumo-primary-contrast-color#
+
+|===
+
+
+== Error
+
+The color red is most often used for errors. It's used for error indicators, error messages, and buttons that can cause permanent data loss. Accompanying text and contrast colors are also defined.
+
+[.property-listing.previews, cols="2,>1"]
+|===
+| Description | CSS Custom Property
+
+| [preview(--lumo-error-color-10pct)]*Error 10%* +
+Error badge background.
+| [custom-property]#--lumo-error-color-10pct#
+
+| [preview(--lumo-error-color-50pct)]*Error 50%* +
+| [custom-property]#--lumo-error-color-50pct#
+
+| [preview(--lumo-error-color)]*Error 100%* +
+Primary error button background.
+| [custom-property]#--lumo-error-color#
+
+| [preview(--lumo-error-text-color)]*Error Text* +
+Secondary & tertiary error button text.
+| [custom-property]#--lumo-error-text-color#
+
+| [preview(--lumo-error-contrast-color)]*Error Contrast* +
+Primary error button text.
+| [custom-property]#--lumo-error-contrast-color#
+
+|===
+
+
+[role="since:com.vaadin:vaadin@V24.1"]
+== Warning
+
+Warning colors are used primarily for warning notifications. They're displayed typically in yellow or orange,
+
+[.property-listing.previews, cols="2,>1"]
+|===
+| Description | CSS Custom Property
+
+| [preview(--lumo-warning-color-10pct)]*Warning 10%* +
+Faint warning background color.
+| [custom-property]#--lumo-warning-color-10pct#
+
+| [preview(--lumo-warning-color)]*Warning 100%* +
+Strong warning background color.
+| [custom-property]#--lumo-warning-color#
+
+| [preview(--lumo-warning-text-color)]*Warning Text* +
+Warning color with sufficient contrast for text.
+| [custom-property]#--lumo-warning-text-color#
+
+| [preview(--lumo-warning-contrast-color)]*Warning Contrast* +
+Contrast color for use on top of background colors.
+| [custom-property]#--lumo-warning-contrast-color#
+
+|===
+
+
+== Success
+
+This is most often depicted with a green color. It's used for success messages, and buttons that complete a certain task. Accompanying text and contrast colors are also defined.
+
+[.property-listing.previews, cols="2,>1"]
+|===
+| Description | CSS Custom Property
+
+| [preview(--lumo-success-color-10pct)]*Success 10%* +
+Success badge background.
+| [custom-property]#--lumo-success-color-10pct#
+
+| [preview(--lumo-success-color-50pct)]*Success 50%* +
+| [custom-property]#--lumo-success-color-50pct#
+
+| [preview(--lumo-success-color)]*Success 100%* +
+Primary success button background.
+| [custom-property]#--lumo-success-color#
+
+| [preview(--lumo-success-text-color)]*Success Text* +
+Secondary & tertiary success button text.
+| [custom-property]#--lumo-success-text-color#
+
+| [preview(--lumo-success-contrast-color)]*Success Contrast* +
+Primary success button text.
+| [custom-property]#--lumo-success-contrast-color#
+
+|===
+
+
+== Text
+
+The following text colors have appropriate contrast with the <<#base>> color.
+
+[.property-listing.previews, cols="2,>1"]
+|===
+| Description | CSS Custom Property
+
+| [preview(--lumo-header-text-color)]*Heading Text*
+| [custom-property]#--lumo-header-text-color#
+
+| [preview(--lumo-body-text-color)]*Body Text* +
+Contrast above 7:1.
+| [custom-property]#--lumo-body-text-color#
+
+| [preview(--lumo-secondary-text-color)]*Secondary Text* +
+Contrast above 4.5:1.
+| [custom-property]#--lumo-secondary-text-color#
+
+| [preview(--lumo-tertiary-text-color)]*Tertiary Text* +
+Contrast above 3:1. Use only for non-essential text. Suitable for graphical elements, such as icons.
+| [custom-property]#--lumo-tertiary-text-color#
+
+| [preview(--lumo-disabled-text-color)]*Disabled Text* +
+Use only for non-essential text/elements.
+| [custom-property]#--lumo-disabled-text-color#
+
+|===
+
+= Lumo Elevation
+
+Elevation is used to signify elements which are stacked on top of other elements in the UI. This page lists Lumo elevation-related style properties, which you can use to create visually consistent elevation styles.
+
+Lumo includes different levels of elevation that are applied using box-shadow.
+
+++++
+<style>
+.previews.elevation {
+  --docs-custom-property-preview-width: 100px;
+  --docs-custom-property-preview-height: 100px;
+}
+
+.custom-property-preview.elevation {
+  background-color: var(--lumo-base-color);
+  background-image: linear-gradient(var(--lumo-contrast-5pct), var(--lumo-contrast-5pct));
+}
+
+.custom-property-preview.elevation::before {
+  content: "";
+  background-color: var(--lumo-base-color);
+  border-radius: var(--lumo-border-radius-m);
+  box-shadow: var(--value);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-property-preview.elevation.xs::before {
+  width: var(--lumo-size-xs);
+  height: var(--lumo-size-xs);
+}
+
+.custom-property-preview.elevation.s::before {
+  width: var(--lumo-size-s);
+  height: var(--lumo-size-s);
+}
+
+.custom-property-preview.elevation.m::before {
+  width: var(--lumo-size-m);
+  height: var(--lumo-size-m);
+}
+
+.custom-property-preview.elevation.l::before {
+  width: var(--lumo-size-l);
+  height: var(--lumo-size-l);
+}
+
+.custom-property-preview.elevation.xl::before {
+  width: var(--lumo-size-xl);
+  height: var(--lumo-size-xl);
+}
+</style>
+++++
+
+[.property-listing.previews.elevation, cols="4,>3"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-box-shadow-xl).elevation.xl]*Extra Large* +
+Elements highest in the stacking order, for example notifications, which should be above all other content.
+| [custom-property]#--lumo-box-shadow-xl#
+
+| [.preview(--lumo-box-shadow-l).elevation.l]*Large* +
+Elements that rise above most elements in the UI, for example dialogs.
+| [custom-property]#--lumo-box-shadow-l#
+
+| [.preview(--lumo-box-shadow-m).elevation.m]*Medium* +
+Contextual overlays, for components such as Select and Menu Bar.
+| [custom-property]#--lumo-box-shadow-m#
+
+| [.preview(--lumo-box-shadow-s).elevation.s]*Small* +
+Tooltips, etc.
+| [custom-property]#--lumo-box-shadow-s#
+
+| [.preview(--lumo-box-shadow-xs).elevation.xs]*Extra Small* +
+Elements closest to the application background, for example cards.
+| [custom-property]#--lumo-box-shadow-xs#
+|===
+
+= Lumo Style Properties
+
+Lumo is based on a set of style properties -- CSS custom properties -- representing colors, fonts, sizes and other styles, that can be customized by providing new values for them in a CSS stylesheet, either globally, or <<../../styling-components#scoping-style-properties, scoped>> to a certain component type or instance.
+
+.Lumo Style Properties Example & Use in Vaadin Components
+[.fill.white]
+image::_images/lumo-properties.png[A small sample of Lumo style properties and their use in Vaadin components, 400]
+
+.Customizing Values of Lumo Style Properties
+[source,css]
+----
+html {
+  --lumo-primary-color: green;
+  --lumo-font-family: 'Roboto';
+}
+----
+
+Lumo style properties can also be used in CSS instead of hard-coded literal values, through the `var()` function:
+
+.Use of Lumo Style Properties in Custom CSS
+[source,css]
+----
+div {
+  border: 1px solid var(--lumo-primary-color);
+  border-radius: var(--lumo-border-radius-m);
+}
+----
+
+The <<../../styling-components#, Styling Vaadin Components>> section provides more details on using Lumo properties to modify the look and feel of Vaadin components. The <<../../styling-other-elements#, Styling Other UI Elements>> section provides more details on using Lumo properties to style other UI elements.
+
+= Lumo Shapes
+
+This page lists Lumo shapes-related style properties, which you can use to adjust the visual style of component shapes.
+
+Lumo defines several border radius values. These values are defined as `em` by default, so they scale with the font size.
+
+++++
+<style>
+.custom-property-preview.shape {
+  background-color: transparent;
+}
+
+.custom-property-preview.shape::after {
+  content: none;
+}
+
+.custom-property-preview.shape::before {
+  content: "";
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  border-radius: var(--value);
+  border: 1px solid;
+}
+
+.custom-property-preview.shape.l::before {
+  width: 2.75em;
+  height: 2.75em;
+}
+
+.custom-property-preview.shape.s::before {
+  width: 1.5em;
+  height: 1.5em;
+}
+</style>
+++++
+
+[.property-listing.previews, cols="1,>1"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-border-radius-l).shape.l]*Large* +
+Dialogs, cards, and other larger container elements.
+| [custom-property]#--lumo-border-radius-l#
+
+| [.preview(--lumo-border-radius-m).shape.m]*Medium* +
+Buttons and input fields, and most other normal-sized UI elements.
+| [custom-property]#--lumo-border-radius-m#
+
+| [.preview(--lumo-border-radius-s).shape.s]*Small* +
+Checkboxes and other small elements that could turn into circles with an excessive border radius.
+| [custom-property]#--lumo-border-radius-s#
+|===
+
+[CAUTION]
+The `--lumo-border-radius` property is deprecated. Use the `--lumo-border-radius-m` property, instead.
+
+[IMPORTANT]
+If you set one of the border radius property values to zero, always use an explicit unit, for example, `--lumo-border-radius-m: 0px;`. If you use `0` without a unit, it causes some CSS `calc()` operations to be invalid.
+
+= Lumo Sizing & Spacing
+
+This page lists Lumo style properties for size and space, which you can use to apply consistent sizing and spacing across your application.
+
+You can enable the built-in <<{articles}/styling/lumo/lumo-variants#, Lumo compact mode variant>> to reduce the font size and the sizing and spacing of all components, allowing you to place more components on the screen.
+
+
+== Size
+
+Use these properties to adjust the sizing of regular elements such as buttons, text fields, and list items.
+
+Medium is the standard size, and it's primarily used to size buttons, text fields and list items. If you adjust the sizing, make sure to keep it large enough for touch targets.
+
+[.property-listing.previews, cols="1,>1"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-size-xl).space]*Extra Large* +
+Minimum data grid header row height
+| [custom-property]#--lumo-size-xl#
+
+| [.preview(--lumo-size-l).space]*Large* +
+Large button
+| [custom-property]#--lumo-size-l#
+
+| [.preview(--lumo-size-m).space]*Medium* +
+Button and input field height, data grid row height
+| [custom-property]#--lumo-size-m#
+
+| [.preview(--lumo-size-s).space]*Small* +
+Small button and input field height
+| [custom-property]#--lumo-size-s#
+
+| [.preview(--lumo-size-xs).space]*Extra Small* +
+| [custom-property]#--lumo-size-xs#
+|===
+
+== Icon Size
+
+++++
+<style>
+.space.custom-property-preview {
+  font-size: var(--lumo-font-size-m);
+}
+.space.custom-property-preview::before {
+  padding: calc(var(--value) * 0.5);
+  border-radius: var(--docs-border-radius-s);
+}
+</style>
+++++
+
+Use the icon size custom properties to set consistent sizes for all icons across your application. The icon sizes are relative to the font size by default, meaning they scale automatically depending on the context you place them in.
+
+[source,typescript]
+----
+include::{root}/frontend/demo/foundation/lumo-tokens.ts[tags="size"]
+----
+
+[.property-listing.previews, cols="1,>1"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-icon-size-l).space]*Large icon* +
+| [custom-property]#--lumo-icon-size-l#
+
+| [.preview(--lumo-icon-size-m).space]*Medium icon* +
+Default size
+| [custom-property]#--lumo-icon-size-m#
+
+| [.preview(--lumo-icon-size-s).space]*Small icon* +
+| [custom-property]#--lumo-icon-size-s#
+|===
+
+
+== Space
+
+Use these properties to adjust the inter-component spacings &ndash; the space outside a regular component (e.g., button, text field) or inside a container component (e.g., layouts, grid cells).
+
+[.property-listing.previews, cols="1,>1"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-space-xl).space]*Extra Large* +
+| [custom-property]#--lumo-space-xl#
+
+| [.preview(--lumo-space-l).space]*Large* +
+| [custom-property]#--lumo-space-l#
+
+| [.preview(--lumo-space-m).space]*Medium* +
+| [custom-property]#--lumo-space-m#
+
+| [.preview(--lumo-space-s).space]*Small* +
+| [custom-property]#--lumo-space-s#
+
+| [.preview(--lumo-space-xs).space]*Extra Small* +
+| [custom-property]#--lumo-space-xs#
+|===
+
+= Lumo Typography
+
+Lumo defines a set of style properties for font family, font size, and line height. You can use these CSS custom properties to apply consistent typographic styles across your application.
+
+You can enable the built-in <<{articles}/styling/lumo/lumo-variants#, Lumo compact mode variant>> to reduce the font size and the sizing and spacing of all components, allowing you to place more components on the screen.
+
+
+== Lumo Font Family
+
+++++
+<style>
+.custom-property-preview {
+  font-family: var(--lumo-font-family);
+}
+
+.line-height.custom-property-preview::before {
+  content: "Abc";
+  display: inline-block;
+  line-height: var(--value);
+  border-inline-start: 2px solid currentColor;
+  padding: 0 3px;
+  background-color: var(--docs-surface-color-2);
+}
+</style>
+++++
+
+The system font stack is used by default:
+
+- Segoe UI on Windows
+- Roboto on Android and Chrome OS
+- San Francisco on macOS, iOS, and iPadOS
+
+On other systems, Helvetica and Arial are used as fallbacks.
+
+[.property-listing.previews, cols="2,>3"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-font-family)]*Main font* +
+Headings, body and UI text
+| [custom-property]#--lumo-font-family#
+|===
+
+
+== Lumo Font Size
+
+The following font sizes are available to use. `M` is the standard size, and is used by most elements by default.
+
+// Allow t-shirt sizes
+pass:[<!-- vale Vaadin.Abbr = NO -->]
+
+[.property-listing.previews, cols="3,>2"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-font-size-xxxl)]*XXXL* +
+Heading text
+| [custom-property]#--lumo-font-size-xxxl#
+
+| [.preview(--lumo-font-size-xxl)]*XXL* +
+Heading text
+| [custom-property]#--lumo-font-size-xxl#
+
+| [.preview(--lumo-font-size-xl)]*XL* +
+Heading text
+| [custom-property]#--lumo-font-size-xl#
+
+| [.preview(--lumo-font-size-l)]*L* +
+Heading text
+| [custom-property]#--lumo-font-size-l#
+
+| [.preview(--lumo-font-size-m)]*M* +
+Body/UI text
+| [custom-property]#--lumo-font-size-m#
+
+| [.preview(--lumo-font-size-s)]*S* +
+Label text
+| [custom-property]#--lumo-font-size-s#
+
+| [.preview(--lumo-font-size-xs)]*XS* +
+Help text, field validation text, badges
+| [custom-property]#--lumo-font-size-xs#
+
+| [.preview(--lumo-font-size-xxs)]*XXS* +
+Small badges
+| [custom-property]#--lumo-font-size-xxs#
+|===
+
+pass:[<!-- vale Vaadin.Abbr = YES -->]
+
+
+== Lumo Line Height
+
+The following line heights are available to use. `M` is the standard size, and is used by most elements by default.
+
+[.property-listing.previews, cols="1,>1"]
+|===
+| Description | CSS Custom Property
+
+| [.preview(--lumo-line-height-m).line-height]*M* +
+| [custom-property]#--lumo-line-height-m#
+
+| [.preview(--lumo-line-height-s).line-height]*S* +
+| [custom-property]#--lumo-line-height-s#
+
+| [.preview(--lumo-line-height-xs).line-height]*XS* +
+| [custom-property]#--lumo-line-height-xs#
+|===
+
+
+// tag::style-properties[]
+== Style Properties
+The following style properties can be used in CSS stylesheets to customize the appearance of this component.
+
+To apply values to these properties globally in your application UI, place them in a CSS block using the `html {...}` selector.
+ifdef::flow,lit[]
+See <<{articles}/styling/lumo/lumo-style-properties#,Lumo Style Properties>> for more information on style properties.
+endif::[]
+// end::style-properties[]
+
+// tag::input-fields[]
+.Input Field Components Shared Styles
+[NOTE]
+Style properties whose names start with `--vaadin-input-field` are shared among all input field components. To apply them only to a specific type of component, use an element selector like `vaadin-text-field {...}`
+
+// end::input-fields[]
+
+
+// tag::input-surface[]
+=== Field Surface
+
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Background
+|`--vaadin-input-field-background`
+|`--lumo-contrast-10pct`
+
+|Background, invalid
+|`--vaadin-input-field-invalid-background`
+|`--lumo-error-color-10pct`
+
+|Background, hover highlight color
+|`--vaadin-input-field-hover-highlight`
+|`--lumo-contrast-50pct`
+
+|Background, invalid hover highlight color
+|`--vaadin-input-field-invalid-hover-highlight`
+|`--lumo-error-color-50pct`
+
+|[since:com.vaadin:vaadin@V24.5]#Background, disabled#
+|`--vaadin-input-field-disabled-background`
+|`--lumo-contrast-5pct`
+
+|Border width
+|`--vaadin-input-field-border-width`
+|`0`
+
+|Border color
+|`--vaadin-input-field-border-color`
+|`--lumo-contrast-50pct`
+
+|Hover highlight opacity
+|`--vaadin-input-field-hover-highlight-opacity`
+|`0.1`
+
+|Height
+|`--vaadin-input-field-height`
+|`--lumo-size-m`
+
+|Value text color
+|`--vaadin-input-field-value-color`
+|`--lumo-body-text-color`
+
+|[since:com.vaadin:vaadin@V24.5]#Value text color, disabled#
+|`--vaadin-input-field-disabled-value-color`
+|`--lumo-disabled-text-color`
+
+|Value font size
+|`--vaadin-input-field-value-font-size`
+|`--lumo-font-size-m`
+
+|Value font weight
+|`--vaadin-input-field-value-font-weight`
+|`400`
+
+|Placeholder text color
+|`--vaadin-input-field-placeholder-color`
+|`--lumo-secondary-text-color`
+
+|Border radius
+|`--vaadin-input-field-border-radius`
+|`--lumo-border-radius-m`
+
+|Read-only border
+|`--vaadin-input-field-readonly-border`
+|`1px dashed --lumo-contrast-30pct`
+
+|Focus ring width
+|`--vaadin-focus-ring-width`
+|`2px`
+
+|Focus ring color
+|`--vaadin-focus-ring-color`
+|`--lumo-primary-color-50pct`
+
+|===
+// end::input-surface[]
+
+
+// tag::label-helper-error[]
+=== Label
+
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Color
+|`--vaadin-input-field-label-color`
+|`--lumo-secondary-text-color`
+
+|Focused color
+|`--vaadin-input-field-focused-label-color`
+|`--lumo-primary-text-color`
+
+|Hovered color
+|`--vaadin-input-field-hovered-label-color`
+|`--lumo-body-text-color`
+
+|Font size
+|`--vaadin-input-field-label-font-size`
+|`--lumo-font-size-s`
+
+|Font weight
+|`--vaadin-input-field-label-font-weight`
+|`500`
+
+|===
+
+=== Helper
+
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Font size
+|`--vaadin-input-field-helper-font-size`
+|`--lumo-font-size-xs`
+
+|Font weight
+|`--vaadin-input-field-helper-font-weight`
+|`400`
+
+|Color
+|`--vaadin-input-field-helper-color`
+|`--lumo-secondary-text-color`
+
+|Top margin
+|`--vaadin-input-field-helper-spacing`
+|`0.4em`
+
+|===
+
+=== Error Message
+
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Font size
+|`--vaadin-input-field-error-font-size`
+|`--lumo-font-size-xs`
+
+|Font weight
+|`--vaadin-input-field-error-font-weight`
+|`400`
+
+|Color
+|`--vaadin-input-field-error-color`
+|`--lumo-error-text-color`
+
+|===
+// end::label-helper-error[]
+
+
+// tag::input-icons[]
+=== Icons
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Font size
+|`--vaadin-input-field-icon-font-size`
+|`--lumo-icon-size-m`
+
+|Color
+|`--vaadin-input-field-icon-color`
+|`--lumo-contrast-60pct`
+
+|===
+// end::input-icons[]
+
+
+---
+title: Styling
+page-title: How to style the Button component | Vaadin components
+description: Styling API reference for the Button components.
+meta-description: Learn how to style Vaadin Buttons with custom themes and CSS. Discover tips and examples to create visually appealing and functional buttons.
+order: 50
+---
+
+
+= Styling
+
+include::../_styling-section-theming-props.adoc[tag=style-properties]
+
+=== Common Properties
+
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Background
+|`--vaadin-button-background`
+|`--lumo-contrast-5pct`
+
+|Text Color
+|`--vaadin-button-text-color`
+|`--lumo-primary-text-color`
+
+|Font Weight
+|`--vaadin-button-font-weight`
+|`500`
+
+|Font Size
+|`--vaadin-button-font-size`
+|`--lumo-font-size-m`
+
+|Border
+|`--vaadin-button-border`
+|`none`
+
+|Border Radius
+|`--vaadin-button-border-radius`
+|`--lumo-border-radius-m`
+
+|Padding
+|`--vaadin-button-padding`
+|`0 var(--vaadin-button-height) / 3 + var(--lumo-border-radius-m) / 2`
+
+|Margin
+|`--vaadin-button-margin`
+|`--lumo-space-xs 0`
+
+|Height
+|`--vaadin-button-height`
+|`--lumo-size-m`
+
+|Min-Width
+|`--vaadin-button-min-width`
+|`var(--vaadin-button-height) * 2`
+
+|===
+
+
+=== Primary Button
+
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Background
+|`--vaadin-button-primary-background`
+|`--lumo-primary-color`
+
+|Text Color
+|`--vaadin-button-primary-text-color`
+|`--lumo-primary-contrast-color`
+
+|Font Weight
+|`--vaadin-button-primary-font-weight`
+|`600`
+
+|Border
+|`--vaadin-button-primary-border`
+|`none`
+
+|===
+
+
+=== Tertiary Button
+
+[cols="1,2,2"]
+|===
+| Feature | Property | Default Value
+
+|Background
+|`--vaadin-button-tertiary-background`
+|`transparent !important`
+
+|Text Color
+|`--vaadin-button-tertiary-text-color`
+|`--lumo-primary-text-color`
+
+|Font Weight
+|`--vaadin-button-tertiary-font-weight`
+|`500`
+
+|Border
+|`--vaadin-button-tertiary-border`
+|`none`
+
+|Padding
+|`--vaadin-button-tertiary-padding`
+|`0 var(--vaadin-button-height) / 6`
+
+|===
+
+include::../_styling-section-intros.adoc[tag=selectors]
+
+
+Root element:: `vaadin-button`
+
+
+=== States
+
+Disabled:: `vaadin-button+++<wbr>+++**[disabled]**`
+Focused:: `vaadin-button+++<wbr>+++**[focused]**`
+Keyboard Focused:: `vaadin-button+++<wbr>+++**[focus-ring]**`
+Hovered:: `vaadin-button+++<wbr>+++**:hover**`
+Hover Highlight:: `vaadin-button+++<wbr>+++**:hover::before**`
+
+
+=== Parts
+
+Label:: `vaadin-button+++<wbr>+++**::part(label)**`
+Prefix (e.g., icon) Wrapper:: `vaadin-button+++<wbr>+++**::part(prefix)**`
+Suffix (e.g., icon) Wrapper:: `vaadin-button+++<wbr>+++**::part(suffix)**`
+Icon:: `vaadin-button+++<wbr>+++** > vaadin-icon**`
+
+
+=== Style Variants
+
+Primary:: `vaadin-button+++<wbr>+++**[theme~="primary"]**`
+Secondary (default):: `vaadin-button+++<wbr>+++**:not([theme])**`
+Tertiary:: `vaadin-button+++<wbr>+++**[theme~="tertiary"]**`
+Tertiary Inline:: `vaadin-button+++<wbr>+++**[theme~="tertiary-inline"]**`
+Icon-Only:: `vaadin-button+++<wbr>+++**[theme~="icon"]**`
+Small:: `vaadin-button+++<wbr>+++**[theme~="small"]**`
+Large:: `vaadin-button+++<wbr>+++**[theme~="large"]**`
+Contrast:: `vaadin-button+++<wbr>+++**[theme~="contrast"]**`
+Success:: `vaadin-button+++<wbr>+++**[theme~="success"]**`
+Danger / Error:: `vaadin-button+++<wbr>+++**[theme~="error"]**`
+[since:com.vaadin:vaadin@V24.5]#Warning#:: `vaadin-button+++<wbr>+++**[theme~="warning"]**`
